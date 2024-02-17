@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+}
+
+.sections-container {
+  position: relative;
+  height: 300vh;
+  overflow-y: hidden;
+}
+.left-section {
+  width: 50vw;
+}
+.right-section {
+  width: 50vw;
+  position: absolute;
+  left: 50vw;
+  bottom: 200vh;
+}
+.box {
+  height: 100vh;
+}
+.box1 {
+  background-color: blue;
+}
+.box2 {
+  background-color: red;
+}
+.box3 {
+  background-color: green;
+}
+.box4 {
+  background-color: yellow;
+}
+.box5 {
+  background-color: orange;
+}
+.box6 {
+  background-color: purple;
+}
