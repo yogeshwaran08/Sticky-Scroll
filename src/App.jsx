@@ -8,13 +8,26 @@ gsap.registerPlugin(ScrollTrigger);
 function App() {
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 0.5 });
+      gsap.set(".photo:not(:first-child)", { y: "110%" });
+
       const animation = gsap.to(".photo:not(:first-child)", {
-        opacity: 1,
-        scale: 1,
+        y: 0,
         duration: 1,
         stagger: 1,
       });
+
+      const exitAnimation = gsap.from(
+        ".photo:not(:first-child)",
+        {
+          y: "110%",
+          duration: 1,
+        },
+        {
+          y: "110%",
+          duration: 1,
+        }
+      );
+
       ScrollTrigger.create({
         trigger: ".gallery",
         start: "top top",
@@ -22,13 +35,23 @@ function App() {
         pin: ".rightblock",
         animation: animation,
         scrub: true,
-        markers: true,
+        onEnter: () => exitAnimation.play(),
       });
     });
     return () => ctx.revert();
   }, []);
   return (
     <React.Fragment>
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h1>Hello👋 welcome to Aixplore</h1>
+      </div>
       <Box className="gallery" sx={{ display: "flex" }}>
         <Box
           className="left"
@@ -48,9 +71,15 @@ function App() {
             },
           }}
         >
-          <Box className="details">BRAND PRODUCT</Box>
-          <Box className="details">PRODUCT DETAILS</Box>
-          <Box className="details">DESIGN AGENCY</Box>
+          <Box className="details">
+            <h1>BRAND PRODUCT</h1>
+          </Box>
+          <Box className="details">
+            <h1>PRODUCT DETAILS</h1>
+          </Box>
+          <Box className="details">
+            <h1>DESIGN AGENCY</h1>
+          </Box>
         </Box>
         <Box
           className="rightblock"
@@ -67,8 +96,9 @@ function App() {
               width: "40vw",
               height: "40vw",
               position: "relative",
+              overflow: "hidden",
               "& .photo": {
-                position: "absolute ",
+                position: "absolute",
                 width: "100%",
                 height: "100%",
                 "& img": {
@@ -86,7 +116,7 @@ function App() {
             </Box>
             <Box className="photo">
               <img
-                src="http://static.showit.co/800/M0IzUCMvQCqlJn1YtNlikw/59514/pexels-yan-5793641-1.jpg"
+                src="http://static.showit.co/800/137NFxuzSxeyjlons2WEzA/59514/pexels-yan-5793643.jpg"
                 alt="img-2"
               />
             </Box>
@@ -99,6 +129,16 @@ function App() {
           </Box>
         </Box>
       </Box>
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h1>Hello👋 welcome to Aixplore</h1>
+      </div>
     </React.Fragment>
   );
 }
